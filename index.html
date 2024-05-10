@@ -16,10 +16,28 @@
         color: #333;
         margin: 0;
         padding: 0;
+        scroll-behavior: smooth;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body::-webkit-scrollbar {
+        width: 0;
+      }
+
+      main {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: calc(100vh - 100px);
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+        font-size: 1rem;
+        font-weight: bold;
       }
 
       h1 {
@@ -93,19 +111,75 @@
         height: 100%;
         z-index: -1;
       }
+
+      footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .pipe {
+        margin: 0 0.5rem;
+      }
+
+      .hidden {
+        display: none;
+        margin: 2rem;
+      }
+
+      .visible {
+        display: block;
+      }
+
+      .insideHidden {
+        margin: 1rem;
+      }
     </style>
   </head>
   <body>
     <div id="particles-js"></div>
-    <div id="inputContainer">
-      <h1>Shortify</h1>
-      <input
-        type="text"
-        id="inputName"
-        placeholder="Enter your name"
-        value="Andreessen Horowitz"
-      />
-      <div id="outputName"></div>
+    <main>
+      <div id="inputContainer">
+        <h1>Shortify</h1>
+        <input
+          type="text"
+          id="inputName"
+          placeholder="Enter your name"
+          value="Andreessen Horowitz"
+        />
+        <div id="outputName"></div>
+      </div>
+    </main>
+    <footer>
+      <a href="https://github.com/s54a/shortify">GitHub</a>
+
+      <div class="pipe">|</div>
+      <div class="heading" onmouseover="toggleHidden()">
+        Why I made this & How to Use
+      </div>
+    </footer>
+
+    <div class="wrapper">
+      <div class="hidden">
+        <div class="insideHidden">
+          Finding a username which is short & available was hard.
+        </div>
+        <div class="insideHidden">
+          But I had heard about A16Z Podcast later when searched about I learned
+          it is short for Andreessen Horowitz.
+        </div>
+        <div class="insideHidden">
+          So from that I got the idea for my username and after telling my
+          friends about this idea it was too much effort to calculate how many
+          letter are there in a name then get a username.
+        </div>
+        <div class="insideHidden">So that's why I built this.</div>
+        <div class="insideHidden">
+          After showing a few they asked what it is so that's why I am writing
+          this.
+        </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -201,6 +275,16 @@
         document.execCommand("copy");
         document.body.removeChild(tempInput);
         alert("Copied to clipboard: " + text);
+      }
+
+      function toggleHidden() {
+        const hiddenContent = document.querySelector(".hidden");
+        hiddenContent.classList.toggle("visible");
+
+        // Scroll to the hidden content
+        if (hiddenContent.classList.contains("visible")) {
+          hiddenContent.scrollIntoView({ behavior: "smooth" });
+        }
       }
     </script>
   </body>
