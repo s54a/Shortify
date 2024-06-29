@@ -145,7 +145,7 @@
         <input
           type="text"
           id="inputName"
-          placeholder="Enter your name"
+          placeholder="Enter Your Input"
           value="Andreessen Horowitz"
         />
         <div id="outputName"></div>
@@ -178,6 +178,14 @@
         <div class="insideHidden">
           After showing a few they asked what it is so that's why I am writing
           this.
+        </div>
+        <div class="insideHidden">
+          29 June 2024 from now I have made this keyboard accessible.
+        </div>
+        <div class="insideHidden">Press "/" to Focus the Input Box</div>
+        <div class="insideHidden">Press "Escape" to Unfocus the Input Box</div>
+        <div class="insideHidden">
+          Press "Enter" to copy the Output it will copy in LowerCase
         </div>
       </div>
     </div>
@@ -241,9 +249,10 @@
 
       inputName.addEventListener("input", generateShortName);
 
+      let shortNameLowercase, shortNameUppercase;
+
       function generateShortName() {
         const name = inputName.value.replace(/\s/g, "");
-        let shortNameLowercase, shortNameUppercase;
 
         if (name.length > 2) {
           shortNameLowercase =
@@ -286,6 +295,20 @@
           hiddenContent.scrollIntoView({ behavior: "smooth" });
         }
       }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "/") {
+          event.preventDefault(); // Prevent the default action of the slash key
+          if (inputName.value === "Andreessen Horowitz") {
+            inputName.value = "";
+          }
+          inputName.focus();
+        } else if (event.key === "Escape") {
+          inputName.blur();
+        } else if (event.key === "Enter") {
+          copyToClipboard(shortNameLowercase);
+        }
+      });
     </script>
   </body>
 </html>
