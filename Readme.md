@@ -12,6 +12,8 @@ And I wasted probably to much time on UI.
 
 Shortify is a simple web application that generates short versions of input names. It provides both lowercase and uppercase versions of the shortened name, along with a copy button to easily copy the generated text to the clipboard.
 
+![Website Preview](image.png)
+
 ## Features
 
 - Automatically generates short versions of input names.
