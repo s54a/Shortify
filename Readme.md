@@ -4,7 +4,7 @@
 
 ## Why I Made this
 
-I was hard to find unique username and some then I remembered about A16Z Podcast then from that I got idea to use usernames in this pattern but then calculating usernames was becoming a hassle so I build this.
+It was hard to find unique username and some then I remembered about A16Z Podcast then from that I got idea to use usernames in this pattern but then calculating usernames was becoming a hassle so I build this.
 
 And I wasted probably to much time on UI.
 
